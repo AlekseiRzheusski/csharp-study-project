@@ -1,0 +1,42 @@
+﻿using DataTypes;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        bool running = true;
+        while (running)
+        {
+            Console.WriteLine("1.DataTypesStudy.Run()\n2.ConditionalsAndLoopsStudy.Run()\n3.MethodsStudy.Run()\n4.OOPStudy.Run()\n5.ThreadingStudy.Run()\n6.Exit");
+            ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+            char choice = keyInfo.KeyChar;
+
+            switch (choice)
+            {
+                case '1':
+                    DataTypesStudy.Run();
+                    break;
+                case '2':
+                    ConditionalsAndLoops.ConditionalsAndLoopsStudy.Run();
+                    break;
+                case '3':
+                    Methods.MethodsStudy.Run();
+                    break;
+                case '4':
+                    OOP.OOPStudy.Run();
+                    break;
+                case '5':
+                    Threading.ThreadingStudy.Run();
+                    break;
+                case '6':
+                    running = false;
+                    break;
+                default:
+                    Console.WriteLine("Wrong input");
+                    break;
+            }
+
+        }
+    }
+}
+

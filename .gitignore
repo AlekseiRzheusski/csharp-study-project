@@ -1,0 +1,14 @@
+bin/
+obj/
+Debug/
+Release/
+*.nupkg
+*.snupkg
+*.nuspec
+*.symbols.nupkg
+packages/
+.vscode/
+*.dll
+*.exe
+*.pdb
+*.log
