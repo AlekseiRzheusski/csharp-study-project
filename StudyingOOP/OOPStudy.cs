@@ -1,7 +1,5 @@
 using PersonClasses;
 
-using System.Security.Cryptography;
-
 namespace OOP;
 
 //Для инициализации объектов классов можно применять инициализаторы. Инициализаторы представляют передачу в фигурных скобках значений доступным полям и свойствам объекта
@@ -9,6 +7,27 @@ namespace OOP;
 
 public static class OOPStudy
 {
+    static void ShowConversion()
+    {
+        //Неявное (implicit) преобразование — вверх по иерархии
+        Adult adult = new Adult("Archie", "Quinn", "15616461650");
+        Human human = adult;
+
+        Console.Write("Method shadowing: ");
+        human.Print();
+        Console.Write("Method overriding: ");
+        human.PrintCurrentClassName();
+        // human.SocialSecurityNumber не работает тк класс Human
+
+        //Явное (explicit) преобразование — вниз по иерархии
+        Adult adult1 = (Adult)human;
+        Console.Write("Method shadowing: ");
+        adult1.Print();
+        Console.Write("Method overriding: ");
+        adult1.PrintCurrentClassName();
+
+        // нельзя Adult adult2 = new Human()
+    }
     public static void Run()
     {
         Person person1 = new Person(name: "Kris", surname: "Camron");
@@ -17,5 +36,6 @@ public static class OOPStudy
         (string name, string surname, int age) = person2;
         Console.WriteLine($"Person 2: {name}, {surname}, {age}, retirement age: {Person.retirementAge}");
 
+        ShowConversion();
     }
 }

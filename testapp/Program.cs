@@ -2,7 +2,8 @@
 
 class Program
 {
-    static void Main(string[] args)
+    //Асинхронный вариант входа (C# 7.1+)
+    static async Task Main(string[] args)
     {
         bool running = true;
         while (running)
@@ -27,6 +28,7 @@ class Program
                     break;
                 case '5':
                     Threading.ThreadingStudy.Run();
+                    await Threading.ThreadingStudy.RunAsync();
                     break;
                 case '6':
                     running = false;

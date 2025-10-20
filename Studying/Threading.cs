@@ -3,8 +3,8 @@ namespace Threading;
 
 public record class ThreadParams
 {
-    public string Name { get; set; }
-    public string Surname { get; set; }
+    public required string Name { get; set; }
+    public required string Surname { get; set; }
     public override string ToString()
     {
         return $"{Name} {Surname} {Thread.CurrentThread.Name}";
