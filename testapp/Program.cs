@@ -8,7 +8,7 @@ class Program
         bool running = true;
         while (running)
         {
-            Console.WriteLine("1.DataTypesStudy.Run()\n2.ConditionalsAndLoopsStudy.Run()\n3.MethodsStudy.Run()\n4.OOPStudy.Run()\n5.ThreadingStudy.Run()\n6.Exit");
+            Console.WriteLine("1.DataTypesStudy.Run()\n2.ConditionalsAndLoopsStudy.Run()\n3.MethodsStudy.Run()\n4.OOPStudy.Run()\n5.ThreadingStudy.Run()\n6.Linq\n7.Exit");
             ConsoleKeyInfo keyInfo = Console.ReadKey(true);
             char choice = keyInfo.KeyChar;
 
@@ -31,6 +31,9 @@ class Program
                     await Threading.ThreadingStudy.RunAsync();
                     break;
                 case '6':
+                    LINQ.LinqStudy.Run();
+                    break;
+                case '7':
                     running = false;
                     break;
                 default:

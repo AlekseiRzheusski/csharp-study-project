@@ -37,5 +37,6 @@ public static class OOPStudy
         Console.WriteLine($"Person 2: {name}, {surname}, {age}, retirement age: {Person.retirementAge}");
 
         ShowConversion();
+        OperatorOverloadingStudy.Run();
     }
 }
