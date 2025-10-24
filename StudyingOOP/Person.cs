@@ -92,7 +92,8 @@ class Person
         age = this.age;
     }
 
-
-
-
+    private void SimplePrivateMethod()
+    {
+        Console.WriteLine("This method is private, hopefully no one except this class has access to it");
+    }
 }

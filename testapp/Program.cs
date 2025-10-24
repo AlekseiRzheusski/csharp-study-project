@@ -1,14 +1,44 @@
-﻿using DataTypes;
+﻿using System.Reflection;
+using DataTypes;
 
 class Program
 {
+    static Assembly GetAssemblyDLL()
+    {
+        string exeDir = AppDomain.CurrentDomain.BaseDirectory;
+        string parentDir = Path.GetFullPath(Path.Combine(exeDir, "..", "..", "..", ".."));
+        string dllPath = Path.Combine(parentDir, "DesignPatterns", "bin", "Debug", "net8.0", "DesignPatterns.dll");
+        return Assembly.LoadFrom(dllPath);
+    }
+
+    static MethodInfo? GetMethod(Assembly asm, string typeName, string methodName)
+    {
+        MethodInfo? run = null;
+        Type? observerImplementation = asm.GetType(typeName);
+        if (observerImplementation is not null)
+        {
+            run = observerImplementation.GetMethod(methodName, BindingFlags.Public | BindingFlags.Static);
+            return run;
+        }
+        else
+        {
+            Console.WriteLine("Type was not found");
+            return null;
+        }
+    }
+
     //Асинхронный вариант входа (C# 7.1+)
     static async Task Main(string[] args)
     {
+        // InterfaceObserver.ShowImplementation.Run();
         bool running = true;
+        // динамическая загрузка сборки
+        Assembly asm = GetAssemblyDLL();
+        MethodInfo? method = GetMethod(asm, "InterfaceObserver.ObserverImplementation", "Run");
+
         while (running)
         {
-            Console.WriteLine("1.DataTypesStudy.Run()\n2.ConditionalsAndLoopsStudy.Run()\n3.MethodsStudy.Run()\n4.OOPStudy.Run()\n5.ThreadingStudy.Run()\n6.Linq\n7.Exit");
+            Console.WriteLine("1.DataTypesStudy.Run()\n2.ConditionalsAndLoopsStudy.Run()\n3.MethodsStudy.Run()\n4.OOPStudy.Run()\n5.ThreadingStudy.Run()\n6.Linq\n7.DesingPatterns\n8.Exit");
             ConsoleKeyInfo keyInfo = Console.ReadKey(true);
             char choice = keyInfo.KeyChar;
 
@@ -34,6 +64,9 @@ class Program
                     LINQ.LinqStudy.Run();
                     break;
                 case '7':
+                    method?.Invoke(null, null);
+                    break;
+                case '8':
                     running = false;
                     break;
                 default:
