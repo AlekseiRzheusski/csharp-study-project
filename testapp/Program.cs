@@ -34,7 +34,8 @@ class Program
         bool running = true;
         // динамическая загрузка сборки
         Assembly asm = GetAssemblyDLL();
-        MethodInfo? method = GetMethod(asm, "InterfaceObserver.ObserverImplementation", "Run");
+        MethodInfo? showInterfaceObserver = GetMethod(asm, "InterfaceObserver.ObserverImplementation", "Run");
+        MethodInfo? showEventObserver = GetMethod(asm, "EventObserver.EventObserverImplementation", "Run");
 
         while (running)
         {
@@ -64,7 +65,8 @@ class Program
                     LINQ.LinqStudy.Run();
                     break;
                 case '7':
-                    method?.Invoke(null, null);
+                    showInterfaceObserver?.Invoke(null, null);
+                    showEventObserver?.Invoke(null, null);
                     break;
                 case '8':
                     running = false;
