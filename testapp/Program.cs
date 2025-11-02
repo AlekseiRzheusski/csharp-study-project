@@ -39,7 +39,7 @@ class Program
 
         while (running)
         {
-            Console.WriteLine("1.DataTypesStudy.Run()\n2.ConditionalsAndLoopsStudy.Run()\n3.MethodsStudy.Run()\n4.OOPStudy.Run()\n5.ThreadingStudy.Run()\n6.Linq\n7.DesingPatterns\n8.Exit");
+            Console.WriteLine("1.DataTypesStudy.Run()\n2.ConditionalsAndLoopsStudy.Run()\n3.MethodsStudy.Run()\n4.OOPStudy.Run()\n5.ThreadingStudy.Run()\n6.Linq\n7.DesingPatterns\n8.FileSystem\n9.Exit");
             ConsoleKeyInfo keyInfo = Console.ReadKey(true);
             char choice = keyInfo.KeyChar;
 
@@ -69,6 +69,9 @@ class Program
                     showEventObserver?.Invoke(null, null);
                     break;
                 case '8':
+                    FileSystem.FileSystemStudy.Run();
+                    break;
+                case '9':
                     running = false;
                     break;
                 default:
